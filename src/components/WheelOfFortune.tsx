@@ -13,6 +13,7 @@ interface WheelOfFortuneProps {
   onQuestionSelected: (question: string) => void;
   isSpinning: boolean;
   setIsSpinning: (spinning: boolean) => void;
+  customQuestions?: string[];
 }
 
 const questions = [
@@ -40,16 +41,19 @@ const wheelColors = [
 export const WheelOfFortune: React.FC<WheelOfFortuneProps> = ({ 
   onQuestionSelected, 
   isSpinning, 
-  setIsSpinning 
+  setIsSpinning,
+  customQuestions
 }) => {
   const wheelRef = useRef<HTMLDivElement>(null);
   const [rotation, setRotation] = useState(0);
 
-  const segments: WheelSegment[] = questions.map((question, index) => ({
+  const activeQuestions = customQuestions && customQuestions.length >= 4 ? customQuestions : questions;
+  
+  const segments: WheelSegment[] = activeQuestions.map((question, index) => ({
     id: index,
     question,
-    color: wheelColors[index].color,
-    textColor: wheelColors[index].textColor
+    color: wheelColors[index % wheelColors.length].color,
+    textColor: wheelColors[index % wheelColors.length].textColor
   }));
 
   const spinWheel = () => {

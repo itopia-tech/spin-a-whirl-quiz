@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { WheelOfFortune } from '@/components/WheelOfFortune';
 import { QuestionModal } from '@/components/QuestionModal';
 import { Scoreboard } from '@/components/Scoreboard';
+import { ExcelUpload } from '@/components/ExcelUpload';
 import { Card } from '@/components/ui/card';
 import { Sparkles, Crown } from 'lucide-react';
 
@@ -13,6 +14,7 @@ const Index = () => {
   const [questionsAnswered, setQuestionsAnswered] = useState(0);
   const [questionsSkipped, setQuestionsSkipped] = useState(0);
   const [streak, setStreak] = useState(0);
+  const [customQuestions, setCustomQuestions] = useState<string[]>([]);
 
   const handleQuestionSelected = (question: string) => {
     setCurrentQuestion(question);
@@ -35,6 +37,14 @@ const Index = () => {
   const handleCloseModal = () => {
     setIsQuestionModalOpen(false);
     setCurrentQuestion('');
+  };
+
+  const handleQuestionsLoaded = (questions: string[]) => {
+    setCustomQuestions(questions);
+  };
+
+  const handleClearQuestions = () => {
+    setCustomQuestions([]);
   };
 
   return (
@@ -64,6 +74,15 @@ const Index = () => {
             <br />
             <span className="text-primary font-semibold">Answer honestly to earn points and build your streak!</span>
           </p>
+        </div>
+
+        {/* Excel Upload */}
+        <div className="max-w-4xl mx-auto mb-8">
+          <ExcelUpload
+            onQuestionsLoaded={handleQuestionsLoaded}
+            onClear={handleClearQuestions}
+            questionCount={customQuestions.length}
+          />
         </div>
 
         {/* Game Layout */}
@@ -102,6 +121,7 @@ const Index = () => {
                   onQuestionSelected={handleQuestionSelected}
                   isSpinning={isSpinning}
                   setIsSpinning={setIsSpinning}
+                  customQuestions={customQuestions}
                 />
 
                 {!isSpinning && (
