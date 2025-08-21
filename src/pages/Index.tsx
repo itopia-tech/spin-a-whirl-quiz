@@ -48,7 +48,7 @@ const Index = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-background via-background to-muted">
+    <div className="min-h-screen bg-white">
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-5">
         <div className="absolute inset-0" style={{
@@ -63,16 +63,16 @@ const Index = () => {
         <div className="text-center mb-8">
           <div className="flex items-center justify-center gap-3 mb-4">
             <Crown className="w-8 h-8 text-primary animate-glow" />
-            <h1 className="text-4xl md:text-6xl font-bold bg-gradient-to-r from-primary via-wheel-ruby to-wheel-purple bg-clip-text text-transparent">
+            <h1 className="text-4xl md:text-6xl font-bold" style={{ color: '#E50000' }}>
               Wheel of Misfortune
             </h1>
             <Crown className="w-8 h-8 text-primary animate-glow" />
           </div>
           
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-            Spin the wheel and face questions that will test your courage! 
+            Spin the wheel, you must. Questions face you will — test your courage, they shall!
             <br />
-            <span className="text-primary font-semibold">Answer honestly to earn points and build your streak!</span>
+            <span className="text-primary font-semibold text-2xl">May The Force Be With You</span>
           </p>
         </div>
 
@@ -86,19 +86,19 @@ const Index = () => {
         </div>
 
         {/* Game Layout */}
-        <div className="grid lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
+        <div className="max-w-7xl mx-auto">
           {/* Scoreboard */}
-          <div className="lg:col-span-1 order-2 lg:order-1">
+          {/* <div className="lg:col-span-1 order-2 lg:order-1">
             <Scoreboard
               score={score}
               questionsAnswered={questionsAnswered}
               questionsSkipped={questionsSkipped}
               streak={streak}
             />
-          </div>
+          </div> */}
 
           {/* Wheel */}
-          <div className="lg:col-span-3 order-1 lg:order-2">
+          <div>
             <Card className="p-4 bg-gradient-to-br from-card to-muted border-2 border-primary/20">
               <div className="flex flex-col items-center">
                 <div className="mb-6">
@@ -147,7 +147,7 @@ const Index = () => {
         </div>
 
         {/* Game Rules */}
-        <Card className="mt-8 p-6 bg-gradient-to-r from-muted/50 to-card/50 border border-primary/10">
+        {/* <Card className="mt-8 p-6 bg-gradient-to-r from-muted/50 to-card/50 border border-primary/10">
           <h3 className="text-lg font-semibold mb-3 text-center">How to Play</h3>
           <div className="grid md:grid-cols-3 gap-4 text-sm text-muted-foreground">
             <div className="text-center">
@@ -163,7 +163,7 @@ const Index = () => {
               <p><strong>Build</strong> your streak and unlock achievements</p>
             </div>
           </div>
-        </Card>
+        </Card> */}
       </div>
 
       {/* Question Modal */}
