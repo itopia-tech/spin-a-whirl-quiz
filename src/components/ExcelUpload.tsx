@@ -190,12 +190,6 @@ export const ExcelUpload: React.FC<ExcelUploadProps> = ({
               </p>
             </div>
             <div className="mt-4">
-              <label htmlFor="excel-upload">
-                <Button variant="outline" className="cursor-pointer">
-                  <Upload className="w-4 h-4 mr-2" />
-                  Choose File
-                </Button>
-              </label>
               <Input
                 id="excel-upload"
                 type="file"
@@ -203,6 +197,14 @@ export const ExcelUpload: React.FC<ExcelUploadProps> = ({
                 onChange={handleFileInputChange}
                 className="hidden"
               />
+              <label htmlFor="excel-upload" className="cursor-pointer">
+                <Button variant="outline" asChild>
+                  <span>
+                    <Upload className="w-4 h-4 mr-2" />
+                    Choose File
+                  </span>
+                </Button>
+              </label>
             </div>
           </div>
         )}
