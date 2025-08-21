@@ -48,7 +48,7 @@ const Index = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-background via-background to-muted">
+    <div className="min-h-screen bg-white">
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-5">
         <div className="absolute inset-0" style={{
@@ -63,16 +63,16 @@ const Index = () => {
         <div className="text-center mb-8">
           <div className="flex items-center justify-center gap-3 mb-4">
             <Crown className="w-8 h-8 text-primary animate-glow" />
-            <h1 className="text-4xl md:text-6xl font-bold bg-gradient-to-r from-primary via-wheel-ruby to-wheel-purple bg-clip-text text-transparent">
+            <h1 className="text-4xl md:text-6xl font-bold" style={{ color: '#E50000' }}>
               Wheel of Misfortune
             </h1>
             <Crown className="w-8 h-8 text-primary animate-glow" />
           </div>
           
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-            Spin the wheel and face questions that will test your courage! 
+            Spin the wheel, you must. Questions face you will — test your courage, they shall!
             <br />
-            <span className="text-primary font-semibold">Answer honestly to earn points and build your streak!</span>
+            <span className="text-primary font-semibold text-2xl">May The Force Be With You</span>
           </p>
         </div>
 
