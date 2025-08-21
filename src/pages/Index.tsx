@@ -86,19 +86,19 @@ const Index = () => {
         </div>
 
         {/* Game Layout */}
-        <div className="grid lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
+        <div className="max-w-7xl mx-auto">
           {/* Scoreboard */}
-          <div className="lg:col-span-1 order-2 lg:order-1">
+          {/* <div className="lg:col-span-1 order-2 lg:order-1">
             <Scoreboard
               score={score}
               questionsAnswered={questionsAnswered}
               questionsSkipped={questionsSkipped}
               streak={streak}
             />
-          </div>
+          </div> */}
 
           {/* Wheel */}
-          <div className="lg:col-span-3 order-1 lg:order-2">
+          <div>
             <Card className="p-4 bg-gradient-to-br from-card to-muted border-2 border-primary/20">
               <div className="flex flex-col items-center">
                 <div className="mb-6">
@@ -147,7 +147,7 @@ const Index = () => {
         </div>
 
         {/* Game Rules */}
-        <Card className="mt-8 p-6 bg-gradient-to-r from-muted/50 to-card/50 border border-primary/10">
+        {/* <Card className="mt-8 p-6 bg-gradient-to-r from-muted/50 to-card/50 border border-primary/10">
           <h3 className="text-lg font-semibold mb-3 text-center">How to Play</h3>
           <div className="grid md:grid-cols-3 gap-4 text-sm text-muted-foreground">
             <div className="text-center">
@@ -163,7 +163,7 @@ const Index = () => {
               <p><strong>Build</strong> your streak and unlock achievements</p>
             </div>
           </div>
-        </Card>
+        </Card> */}
       </div>
 
       {/* Question Modal */}
