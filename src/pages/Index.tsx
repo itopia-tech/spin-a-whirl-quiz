@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { WheelOfFortune } from '@/components/WheelOfFortune';
 import { QuestionModal } from '@/components/QuestionModal';
 import { Scoreboard } from '@/components/Scoreboard';
+import { ExcelUpload } from '@/components/ExcelUpload';
 import { Card } from '@/components/ui/card';
 import { Sparkles, Crown } from 'lucide-react';
 
@@ -13,6 +14,7 @@ const Index = () => {
   const [questionsAnswered, setQuestionsAnswered] = useState(0);
   const [questionsSkipped, setQuestionsSkipped] = useState(0);
   const [streak, setStreak] = useState(0);
+  const [customQuestions, setCustomQuestions] = useState<string[]>([]);
 
   const handleQuestionSelected = (question: string) => {
     setCurrentQuestion(question);
@@ -35,6 +37,14 @@ const Index = () => {
   const handleCloseModal = () => {
     setIsQuestionModalOpen(false);
     setCurrentQuestion('');
+  };
+
+  const handleQuestionsLoaded = (questions: string[]) => {
+    setCustomQuestions(questions);
+  };
+
+  const handleClearQuestions = () => {
+    setCustomQuestions([]);
   };
 
   return (
@@ -66,8 +76,17 @@ const Index = () => {
           </p>
         </div>
 
+        {/* Excel Upload */}
+        <div className="max-w-2xl mx-auto mb-4">
+          <ExcelUpload
+            onQuestionsLoaded={handleQuestionsLoaded}
+            onClear={handleClearQuestions}
+            questionCount={customQuestions.length}
+          />
+        </div>
+
         {/* Game Layout */}
-        <div className="grid lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+        <div className="grid lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
           {/* Scoreboard */}
           <div className="lg:col-span-1 order-2 lg:order-1">
             <Scoreboard
@@ -79,8 +98,8 @@ const Index = () => {
           </div>
 
           {/* Wheel */}
-          <div className="lg:col-span-2 order-1 lg:order-2">
-            <Card className="p-8 bg-gradient-to-br from-card to-muted border-2 border-primary/20">
+          <div className="lg:col-span-3 order-1 lg:order-2">
+            <Card className="p-4 bg-gradient-to-br from-card to-muted border-2 border-primary/20">
               <div className="flex flex-col items-center">
                 <div className="mb-6">
                   <div className="flex items-center gap-2 text-lg font-semibold text-center">
@@ -102,6 +121,7 @@ const Index = () => {
                   onQuestionSelected={handleQuestionSelected}
                   isSpinning={isSpinning}
                   setIsSpinning={setIsSpinning}
+                  customQuestions={customQuestions}
                 />
 
                 {!isSpinning && (
