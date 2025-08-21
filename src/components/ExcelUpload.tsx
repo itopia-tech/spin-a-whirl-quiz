@@ -138,12 +138,12 @@ export const ExcelUpload: React.FC<ExcelUploadProps> = ({
   };
 
   return (
-    <Card className="p-6 bg-gradient-to-br from-card to-muted border-2 border-dashed border-primary/20">
-      <div className="space-y-4">
+    <Card className="p-4 bg-gradient-to-br from-card to-muted border-2 border-dashed border-primary/20">
+      <div className="space-y-3">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <FileSpreadsheet className="w-5 h-5 text-primary" />
-            <h3 className="text-lg font-semibold">Custom Questions</h3>
+            <FileSpreadsheet className="w-4 h-4 text-primary" />
+            <h3 className="text-base font-semibold">Custom Questions</h3>
           </div>
           {questionCount > 0 && (
             <div className="flex items-center gap-2">
@@ -165,7 +165,7 @@ export const ExcelUpload: React.FC<ExcelUploadProps> = ({
 
         {uploadStatus === 'idle' && (
           <div
-            className={`border-2 border-dashed rounded-lg p-8 text-center transition-colors ${
+            className={`border-2 border-dashed rounded-lg p-4 text-center transition-colors ${
               isDragging
                 ? 'border-primary bg-primary/5'
                 : 'border-muted-foreground/25 hover:border-primary/50'
@@ -177,19 +177,17 @@ export const ExcelUpload: React.FC<ExcelUploadProps> = ({
             }}
             onDragLeave={() => setIsDragging(false)}
           >
-            <Upload className="w-12 h-12 text-muted-foreground mx-auto mb-4" />
-            <div className="space-y-2">
-              <p className="text-lg font-medium">
-                {isDragging ? 'Drop your Excel file here' : 'Upload Excel file with questions'}
-              </p>
-              <p className="text-sm text-muted-foreground">
-                Questions should be in column A. Supports .xlsx and .xls files.
-              </p>
-              <p className="text-xs text-muted-foreground">
-                4-12 questions required • Max file size: 5MB
-              </p>
-            </div>
-            <div className="mt-4">
+            <div className="flex items-center justify-center gap-4">
+              <Upload className="w-8 h-8 text-muted-foreground" />
+              <div className="flex-1 text-left">
+                <p className="text-base font-medium">
+                  {isDragging ? 'Drop your Excel file here' : 'Upload Excel file with questions'}
+                </p>
+                <p className="text-xs text-muted-foreground">
+                  Questions in column A • 4-12 questions • .xlsx/.xls • Max 5MB
+                </p>
+              </div>
+              <div>
               <Input
                 id="excel-upload"
                 type="file"
@@ -197,14 +195,13 @@ export const ExcelUpload: React.FC<ExcelUploadProps> = ({
                 onChange={handleFileInputChange}
                 className="hidden"
               />
-              <label htmlFor="excel-upload" className="cursor-pointer">
-                <Button variant="outline" asChild>
-                  <span>
+                <label htmlFor="excel-upload" className="cursor-pointer">
+                  <Button variant="outline" size="sm">
                     <Upload className="w-4 h-4 mr-2" />
                     Choose File
-                  </span>
-                </Button>
-              </label>
+                  </Button>
+                </label>
+              </div>
             </div>
           </div>
         )}
